@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 import type { DayData, FoodItem, MealCategory } from "@/types";
 
 interface DailyFoodListProps {
@@ -18,78 +17,47 @@ export function DailyFoodList({
 }: DailyFoodListProps) {
   const [currentIndex, setCurrentIndex] = useState(initialDayIndex);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isScrollingRef = useRef(false);
 
-  // Sync scroll when index changes
-  useEffect(() => {
-    if (scrollContainerRef.current) {
+  const handleScroll = () => {
+    if (scrollContainerRef.current && !isScrollingRef.current) {
       const container = scrollContainerRef.current;
       const cardWidth = container.clientWidth;
-      container.scrollTo({
-        left: currentIndex * cardWidth,
-        behavior: 'smooth'
-      });
-    }
-  }, [currentIndex]);
-
-  const handlePrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentIndex < weekData.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      const scrollLeft = container.scrollLeft;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      
+      if (newIndex !== currentIndex && newIndex >= 0 && newIndex < weekData.length) {
+        setCurrentIndex(newIndex);
+      }
     }
   };
 
   return (
     <div className="relative">
-      {/* Navigation Arrows - MOVED TO TOP */}
-      <div className="flex justify-between items-center mb-4">
-        <motion.button
-          whileTap={{ scale: 0.9 }}
-          onClick={handlePrevious}
-          disabled={currentIndex === 0}
-          className={`
-            p-3 rounded-xl glass z-10
-            ${currentIndex === 0 
-              ? 'opacity-30 cursor-not-allowed' 
-              : 'hover:bg-[var(--accent-primary)]/20 cursor-pointer'
-            }
-          `}
+      {/* Day Header */}
+      <div className="text-center mb-6">
+        <motion.p
+          key={currentIndex}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-3xl font-bold gradient-text"
         >
-          <ChevronLeft size={24} className="text-[var(--accent-primary)]" />
-        </motion.button>
-
-        <div className="text-center">
-          <p className="text-2xl font-bold gradient-text">
-            {weekData[currentIndex]?.day}
-          </p>
-          <p className="text-sm text-[var(--foreground-muted)]">
-            {weekData[currentIndex]?.date}
-          </p>
-        </div>
-        
-        <motion.button
-          whileTap={{ scale: 0.9 }}
-          onClick={handleNext}
-          disabled={currentIndex === weekData.length - 1}
-          className={`
-            p-3 rounded-xl glass z-10
-            ${currentIndex === weekData.length - 1
-              ? 'opacity-30 cursor-not-allowed'
-              : 'hover:bg-[var(--accent-primary)]/20 cursor-pointer'
-            }
-          `}
+          {weekData[currentIndex]?.day}
+        </motion.p>
+        <motion.p
+          key={`date-${currentIndex}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-sm text-[var(--foreground-muted)] mt-1"
         >
-          <ChevronRight size={24} className="text-[var(--accent-primary)]" />
-        </motion.button>
+          {weekData[currentIndex]?.date}
+        </motion.p>
       </div>
 
       {/* Scrollable Container */}
       <div
         ref={scrollContainerRef}
+        onScroll={handleScroll}
         className="overflow-x-auto snap-x snap-mandatory hide-scrollbar"
         style={{ scrollSnapType: 'x mandatory' }}
       >
@@ -114,7 +82,21 @@ export function DailyFoodList({
         {weekData.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => {
+              if (scrollContainerRef.current) {
+                isScrollingRef.current = true;
+                const container = scrollContainerRef.current;
+                const cardWidth = container.clientWidth;
+                container.scrollTo({
+                  left: index * cardWidth,
+                  behavior: 'smooth'
+                });
+                setCurrentIndex(index);
+                setTimeout(() => {
+                  isScrollingRef.current = false;
+                }, 500);
+              }
+            }}
             className={`
               h-2 rounded-full transition-all duration-300
               ${index === currentIndex 
