@@ -1,0 +1,61 @@
+{
+  "common": {
+    "appName": "DietaVitto",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "close": "Chiudi"
+  },
+  "nav": {
+    "daily": "Giornaliero",
+    "weekly": "Settimanale",
+    "settings": "Impostazioni"
+  },
+  "days": {
+    "monday": "Lunedì",
+    "tuesday": "Martedì",
+    "wednesday": "Mercoledì",
+    "thursday": "Giovedì",
+    "friday": "Venerdì",
+    "saturday": "Sabato",
+    "sunday": "Domenica"
+  },
+  "meals": {
+    "breakfast": "Colazione",
+    "lunch": "Pranzo",
+    "dinner": "Cena"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "notifications": "Notifiche",
+    "theme": "Tema",
+    "language": "Lingua",
+    "preferences": "Preferenze"
+  },
+  "notifications": {
+    "title": "Notifiche",
+    "frequency": "Frequenza",
+    "time": "Orario",
+    "type": "Tipo di Notifica",
+    "customMessage": "Messaggio Personalizzato",
+    "daily": "Giornaliera",
+    "alternate": "A giorni alterni",
+    "weekly": "Settimanale",
+    "shopping": "Promemoria Spesa",
+    "prep": "Preparazione Cucina",
+    "motivational": "Messaggio Motivazionale",
+    "testNotification": "Test Notifica",
+    "savePreferences": "Salva Preferenze"
+  },
+  "weekly": {
+    "title": "Lista Settimanale",
+    "sortAlphabetical": "Alfabetico",
+    "sortFrequency": "Per frequenza",
+    "copyList": "Copia Lista",
+    "copied": "Copiato!",
+    "uniqueItems": "alimenti unici questa settimana"
+  }
+}

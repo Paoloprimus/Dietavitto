@@ -1,0 +1,61 @@
+{
+  "common": {
+    "appName": "DietaVitto",
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close"
+  },
+  "nav": {
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "settings": "Settings"
+  },
+  "days": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
+  },
+  "meals": {
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner"
+  },
+  "settings": {
+    "title": "Settings",
+    "notifications": "Notifications",
+    "theme": "Theme",
+    "language": "Language",
+    "preferences": "Preferences"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "frequency": "Frequency",
+    "time": "Time",
+    "type": "Notification Type",
+    "customMessage": "Custom Message",
+    "daily": "Daily",
+    "alternate": "Every other day",
+    "weekly": "Weekly",
+    "shopping": "Shopping Reminder",
+    "prep": "Meal Prep",
+    "motivational": "Motivational Message",
+    "testNotification": "Test Notification",
+    "savePreferences": "Save Preferences"
+  },
+  "weekly": {
+    "title": "Weekly List",
+    "sortAlphabetical": "Alphabetical",
+    "sortFrequency": "By frequency",
+    "copyList": "Copy List",
+    "copied": "Copied!",
+    "uniqueItems": "unique items this week"
+  }
+}

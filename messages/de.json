@@ -1,0 +1,61 @@
+{
+  "common": {
+    "appName": "DietaVitto",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen"
+  },
+  "nav": {
+    "daily": "Täglich",
+    "weekly": "Wöchentlich",
+    "settings": "Einstellungen"
+  },
+  "days": {
+    "monday": "Montag",
+    "tuesday": "Dienstag",
+    "wednesday": "Mittwoch",
+    "thursday": "Donnerstag",
+    "friday": "Freitag",
+    "saturday": "Samstag",
+    "sunday": "Sonntag"
+  },
+  "meals": {
+    "breakfast": "Frühstück",
+    "lunch": "Mittagessen",
+    "dinner": "Abendessen"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "notifications": "Benachrichtigungen",
+    "theme": "Thema",
+    "language": "Sprache",
+    "preferences": "Einstellungen"
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "frequency": "Häufigkeit",
+    "time": "Uhrzeit",
+    "type": "Benachrichtigungstyp",
+    "customMessage": "Eigene Nachricht",
+    "daily": "Täglich",
+    "alternate": "Jeden zweiten Tag",
+    "weekly": "Wöchentlich",
+    "shopping": "Einkaufserinnerung",
+    "prep": "Essensvorbereitung",
+    "motivational": "Motivationsnachricht",
+    "testNotification": "Testbenachrichtigung",
+    "savePreferences": "Einstellungen speichern"
+  },
+  "weekly": {
+    "title": "Wochenliste",
+    "sortAlphabetical": "Alphabetisch",
+    "sortFrequency": "Nach Häufigkeit",
+    "copyList": "Liste kopieren",
+    "copied": "Kopiert!",
+    "uniqueItems": "einzigartige Artikel diese Woche"
+  }
+}

@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+/* =============================================
+   DietaVitto - Theme Variables (Fliqk-inspired)
+   ============================================= */
+
+/* Dark theme (default) - Cursor-style dark gray */
+:root, .dark {
+  --background: #1e1e1e;
+  --background-secondary: #252526;
+  --foreground: #e0e0e0;
+  --foreground-muted: #858585;
+  --accent-primary: #BEFF00;
+  --accent-secondary: #00FF94;
+  --accent-purple: #BEFF00;
+  --accent-pink: #00FF94;
+  --accent-coral: #BEFF00;
+  --card-bg: #2d2d2d;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --gradient-primary: linear-gradient(135deg, #BEFF00 0%, #00FF94 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(190, 255, 0, 0.08) 0%, rgba(0, 255, 148, 0.08) 100%);
+  color-scheme: dark;
+}
+
+/* Light theme - gray scale for clear hierarchy */
+.light {
+  --background: #e5e5e5;
+  --background-secondary: #d8d8d8;
+  --foreground: #1a1a1a;
+  --foreground-muted: #555555;
+  --accent-primary: #6ba800;
+  --accent-secondary: #0d9060;
+  --accent-purple: #6ba800;
+  --accent-pink: #0d9060;
+  --accent-coral: #6ba800;
+  --card-bg: #f8f8f8;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --gradient-primary: linear-gradient(135deg, #6ba800 0%, #0d9060 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(107, 168, 0, 0.08) 0%, rgba(13, 144, 96, 0.08) 100%);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-muted);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient border */
+.gradient-border {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 16px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: var(--gradient-primary);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.gradient-border:hover::before {
+  opacity: 0.6;
+}
+
+/* Glass effect */
+.glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+}
+
+/* Light theme glass adjustment */
+.light .glass {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Input focus ring */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-purple);
+}
+
+/* Button hover glow */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-glow:hover::after {
+  opacity: 0.2;
+}
+
+/* Tag pill */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: rgba(190, 255, 0, 0.12);
+  color: var(--accent-primary);
+  transition: all 0.2s ease;
+  text-transform: lowercase;
+}
+
+.light .tag {
+  background: rgba(132, 204, 22, 0.12);
+}
+
+.tag:hover {
+  background: rgba(190, 255, 0, 0.2);
+}
+
+.light .tag:hover {
+  background: rgba(132, 204, 22, 0.2);
+}
+
+/* Custom checkbox */
+.custom-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--card-border);
+  border-radius: 6px;
+  background: var(--card-bg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.custom-checkbox:checked {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.custom-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.custom-checkbox:hover {
+  border-color: var(--accent-primary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(190, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(190, 255, 0, 0.5);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--card-bg) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    var(--card-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.light .skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--card-bg) 25%,
+    rgba(0, 0, 0, 0.05) 50%,
+    var(--card-bg) 75%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Scroll snap for daily view */
+.snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.snap-center {
+  scroll-snap-align: center;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
