@@ -207,7 +207,7 @@ export async function showNotification(
         body,
         icon,
         badge: icon,
-        vibrate: [200, 100, 200],
+        // vibrate: [200, 100, 200],
         tag: 'dietavitto-notification',
       });
     } else {
