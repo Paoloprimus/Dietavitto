@@ -95,9 +95,9 @@ export default function SettingsPage() {
     }
   };
 
-  const handleTestNotification = async () => {
+  // const handleTestNotification = async () => {
     // Notification test is handled in the component
-  };
+  // };
 
   if (loading) {
     return (
@@ -156,7 +156,7 @@ export default function SettingsPage() {
         <NotificationSettings
           preferences={preferences}
           onSave={handleSave}
-          onTestNotification={handleTestNotification}
+        //  onTestNotification={handleTestNotification}
         />
       </main>
     </div>
